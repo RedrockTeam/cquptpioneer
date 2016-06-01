@@ -37,19 +37,19 @@
                     <li class="<block name='dashboard'></block>">
                         <a href="{:U('Index/index')}">仪表盘</a>
                     </li>
-                    <li class="dropdown">
+                    <li class="dropdown <block name='typelist'></block>">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle">栏目管理<b class="caret"></b>
 
                         </a>
                         <ul class="dropdown-menu" id="menu1">
                             <li>
-                                <a href="#">栏目添加</a>
+                                <a href="{:U('Type/addPage')}">栏目添加</a>
                             </li>
                             <li>
-                                <a href="#">栏目编辑</a>
+                                <a href="{:U('Type/editPage')}">栏目编辑</a>
                             </li>
                             <li>
-                                <a href="#">栏目删除</a>
+                                <a href="{:U('Type/deletePage')}">栏目删除</a>
                             </li>
                         </ul>
                     </li>

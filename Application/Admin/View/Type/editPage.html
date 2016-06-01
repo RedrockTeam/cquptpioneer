@@ -1,0 +1,56 @@
+<extend name="Public:base"/>
+<block name="title">
+    栏目编辑
+</block>
+<block name="typelist">active</block>
+<block name="menu">
+    <li class="">
+        <a href="{:U('Type/addPage')}"><i class="icon-chevron-right"></i>栏目添加</a>
+    </li>
+    <li class="active">
+        <a href="{:U('Type/editPage')}"><i class="icon-chevron-right"></i>栏目编辑</a>
+    </li>
+    <li class="">
+        <a href="{:U('Type/deletePage')}"><i class="icon-chevron-right"></i>栏目删除</a>
+    </li>
+</block>
+
+<block name="content">
+    <!-- block -->
+    <div class="block">
+        <div class="navbar navbar-inner block-header">
+            <div class="muted pull-left">栏目编辑</div>
+        </div>
+        <div class="block-content collapse in">
+            <div class="span12">
+                <form class="form-horizontal" action="{:U('Type/edit')}" method="post">
+                    <fieldset>
+                        <legend>栏目编辑</legend>
+                        <div class="control-group success">
+                            <label class="control-label" for="selectError">选择栏目</label>
+                            <div class="controls">
+                                <select id="selectError" name="type_id">
+                                    <volist name="list" id="vo">
+                                        <option value="{$vo.id}">{$vo.column}</option>
+                                    </volist>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group success">
+                            <label class="control-label" for="inputError">修改为</label>
+                            <div class="controls">
+                                <input type="text" id="inputError" name="type_name">
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">保存</button>
+                        </div>
+                    </fieldset>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <!-- /block -->
+</block>
