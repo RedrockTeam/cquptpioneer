@@ -1,10 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>登录</title>
-</head>
-<body>
-
-</body>
-</html>
+<extend name="Public:base"/>
+<block name="title">
+    登录
+</block>
+<block name="content">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 text-center">
+            <form method="post" action="{:U('Login/login')}">
+                <div class="form-group">
+                    <label>用户名</label>
+                    <input type="text" class="form-control" placeholder="用户名" name="username">
+                </div>
+                <div class="form-group">
+                    <label >密码</label>
+                    <input type="password" class="form-control" placeholder="密码" name="password">
+                </div>
+                <button type="submit" class="btn btn-success">登录</button>
+            </form>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</block>

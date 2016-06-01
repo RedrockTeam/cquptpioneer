@@ -1,0 +1,19 @@
+<extend name="Public:base"/>
+<block name="title">
+    管理首页
+</block>
+<block name="menu">
+    <li class="active">
+        <a href="{:U('Index/index')}"><i class="icon-chevron-right"></i>仪表盘</a>
+    </li>
+    <li class="">
+        <a href="{:U('Index/resetPassword')}"><i class="icon-chevron-right"></i>修改密码</a>
+    </li>
+</block>
+<block name="dashboard">active</block>
+<block name="content">
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <h4>欢迎登录</h4>
+    </div>
+</block>
