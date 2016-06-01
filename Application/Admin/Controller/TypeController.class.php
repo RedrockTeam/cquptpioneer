@@ -8,6 +8,18 @@ class TypeController extends BaseController {
         $this->display();
     }
 
+    public function add() {
+        $name = I('post.type_name');
+        $type = I('post.type');
+        $data = array(
+            'status' => 1,
+            'column' => $name,
+            'type'   => $type
+        );
+        M('type')->add($data);
+        $this->success('成功');
+    }
+
     //改
     public function editPage() {
         $data = M('type')->where(array('status'=>1))->select();

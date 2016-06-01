@@ -37,35 +37,22 @@
                     <li class="<block name='dashboard'></block>">
                         <a href="{:U('Index/index')}">仪表盘</a>
                     </li>
-                    <li class="dropdown <block name='typelist'></block>">
-                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">栏目管理<b class="caret"></b>
-
-                        </a>
-                        <ul class="dropdown-menu" id="menu1">
-                            <li>
-                                <a href="{:U('Type/addPage')}">栏目添加</a>
-                            </li>
-                            <li>
-                                <a href="{:U('Type/editPage')}">栏目编辑</a>
-                            </li>
-                            <li>
-                                <a href="{:U('Type/deletePage')}">栏目删除</a>
-                            </li>
-                        </ul>
+                    <li class="<block name='typelist'></block>">
+                        <a href="{:U('Type/addPage')}">栏目管理</a>
                     </li>
-                    <li class="dropdown">
+                    <li class="dropdown <block name='article'></block>">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle">文章管理<b class="caret"></b>
 
                         </a>
                         <ul class="dropdown-menu" id="menu2">
                             <li>
-                                <a href="#">文章添加</a>
+                                <a href="{:U('Article/addPage')}">文章添加</a>
                             </li>
                             <li>
-                                <a href="#">文章编辑</a>
+                                <a href="{:U('Article/editPage')}">文章编辑</a>
                             </li>
                             <li>
-                                <a href="#">文章删除</a>
+                                <a href="{:U('Article/deletePage')}">文章删除</a>
                             </li>
                         </ul>
                     </li>
