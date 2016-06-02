@@ -4,3 +4,4 @@ config.php
 gulpfile.js
 node_modules/
 Runtime
+Public/uploads/*
