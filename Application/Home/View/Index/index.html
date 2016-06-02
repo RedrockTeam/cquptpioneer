@@ -129,30 +129,12 @@
                     <div class="border"></div>
                 </div>
                 <ul class="articles">
-                    <li class="article">
-                        <a href="">132</a>
-                        <span class="date">5/24</span>
-                    </li>
-                    <li class="article">
-                        <a href="">132</a>
-                        <span class="date">5/24</span>
-                    </li>
-                    <li class="article">
-                        <a href="">132</a>
-                        <span class="date">5/24</span>
-                    </li>
-                    <li class="article">
-                        <a href="">132</a>
-                        <span class="date">5/24</span>
-                    </li>
-                    <li class="article">
-                        <a href="">132</a>
-                        <span class="date">5/24</span>
-                    </li>
-                    <li class="article">
-                        <a href="">132</a>
-                        <span class="date">5/24</span>
-                    </li>
+                    <volist name="articlelist.2" id="vo" >
+                        <li class="article">
+                            <a href="">{$vo.title}</a>
+                            <span class="date"><?php echo substr($vo['time'], 5, 5); ?></span>
+                        </li>
+                    </volist>
                 </ul>
             </div>
             <div class="column">
@@ -165,30 +147,12 @@
                     <div class="border"></div>
                 </div>
                 <ul class="articles">
-                    <li class="article">
-                        <a href="">132</a>
-                        <span class="date">5/24</span>
-                    </li>
-                    <li class="article">
-                        <a href="">132</a>
-                        <span class="date">5/24</span>
-                    </li>
-                    <li class="article">
-                        <a href="">132</a>
-                        <span class="date">5/24</span>
-                    </li>
-                    <li class="article">
-                        <a href="">132</a>
-                        <span class="date">5/24</span>
-                    </li>
-                    <li class="article">
-                        <a href="">132</a>
-                        <span class="date">5/24</span>
-                    </li>
-                    <li class="article">
-                        <a href="">132</a>
-                        <span class="date">5/24</span>
-                    </li>
+                    <volist name="articlelist.3" id="vo" >
+                        <li class="article">
+                            <a href="">{$vo.title}</a>
+                            <span class="date"><?php echo substr($vo['time'], 5, 5); ?></span>
+                        </li>
+                    </volist>
                 </ul>
             </div>
         </div>
