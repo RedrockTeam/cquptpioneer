@@ -11,7 +11,7 @@ module.exports = {
 		]
 	},
 	output: {
-		path: __dirname + '/public/build/',
+		path: __dirname + '../../Public/build/',
 		publicPath: '/public/build/',
 		filename: '[name].js'
 	},
@@ -34,7 +34,7 @@ module.exports = {
 			},
 			{
 				test: /\.(jpg|png|woff|woff2|eot|ttf|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-				loader: 'url?limit=8192&name=/img/[name].[ext]'
+				loader: 'url?limit=8192&name=../../Public/img/[name].[ext]'
 			}
 		]
 	},
@@ -46,7 +46,7 @@ module.exports = {
 			}
 		}),
 		new CopyWebpackPlugin([
-            // {from: 'index.html', to: '../../View/ForgetPassword'}            
+            {from: 'index.html', to: '../../View/ForgetPassword'}            
         ])
 	]
 }
