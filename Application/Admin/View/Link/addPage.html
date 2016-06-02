@@ -1,0 +1,56 @@
+<extend name="Public:base"/>
+<block name="title">
+    直链添加
+</block>
+<block name='link'>active</block>
+<block name="menu">
+    <li class="active">
+        <a href="{:U('Link/addPage')}"><i class="icon-chevron-right"></i>直链添加</a>
+    </li>
+    <li class="">
+        <a href="{:U('Link/editPage')}"><i class="icon-chevron-right"></i>直链编辑</a>
+    </li>
+    <li class="">
+        <a href="{:U('Link/deletePage')}"><i class="icon-chevron-right"></i>直链删除</a>
+    </li>
+</block>
+
+<block name="content">
+    <!-- block -->
+    <div class="block">
+        <div class="navbar navbar-inner block-header">
+            <div class="muted pull-left">直链添加</div>
+        </div>
+        <div class="block-content collapse in">
+            <div class="span12">
+                <form class="form-horizontal" action="{:U('Link/add')}" method="post">
+                    <fieldset>
+                        <legend>直链添加</legend>
+                        <div class="control-group success">
+                            <label class="control-label" for="selectError">选择直链类别</label>
+                            <div class="controls">
+                                <select id="selectError" name="type_id">
+                                    <volist name="typelist" id="vo">
+                                        <option value="{$vo.id}">{$vo.column}</option>
+                                    </volist>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group success">
+                            <label class="control-label" for="inputError">名称</label>
+                            <div class="controls">
+                                <input type="text" id="inputError" name="name">
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">保存</button>
+                        </div>
+                    </fieldset>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <!-- /block -->
+</block>
