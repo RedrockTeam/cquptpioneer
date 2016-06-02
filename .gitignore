@@ -1,7 +1,10 @@
 .idea
 config.php
 .DS_Store
-gulpfile.js
 node_modules/
 Runtime
+<<<<<<< HEAD
+
+=======
 Public/uploads/*
+>>>>>>> cff1be2081bff161cb7787fe1bba56c3b3588d8e
