@@ -11,7 +11,7 @@ module.exports = {
 		]
 	},
 	output: {
-		path: __dirname + '../../Public/build/',
+		path: '../Public/build/',
 		publicPath: '/public/build/',
 		filename: '[name].js'
 	},
@@ -34,7 +34,7 @@ module.exports = {
 			},
 			{
 				test: /\.(jpg|png|woff|woff2|eot|ttf|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-				loader: 'url?limit=8192&name=../../Public/img/[name].[ext]'
+				loader: 'url?limit=8192&name=../build/img/[name].[ext]'
 			}
 		]
 	},
@@ -45,8 +45,16 @@ module.exports = {
 				warnings: false
 			}
 		}),
+		new webpack.ProvidePlugin({
+			$: "jquery",
+		    jQuery: "jquery",
+		    "window.jQuery": "jquery"
+		}),
 		new CopyWebpackPlugin([
-            {from: 'index.html', to: '../../View/ForgetPassword'}            
+            {from: 'index.html', to: '../../Application/Home/View'},
+            {from: 'page.html', to: '../../Application/Home/View'},
+            {from: 'detail.html', to: '../../Application/Home/View'},
+            {from: 'src/img', to: '../img'}
         ])
 	]
 }

@@ -1,0 +1,140 @@
+<extend name="Public:base"/>
+<block name="title">
+    文章编辑
+</block>
+<block name="article">active</block>
+<block name="menu">
+        <li class="active">
+            <a href="#"><i class="icon-chevron-right"></i>文章编辑</a>
+        </li>
+</block>
+
+<block name="content">
+    <!-- block -->
+    <div class="block">
+        <div class="navbar navbar-inner block-header">
+            <div class="muted pull-left">文章编辑</div>
+        </div>
+        <form class="form-horizontal" action="{:U('Article/edit')}" method="post" enctype="multipart/form-data">
+            <fieldset>
+                <div class="control-group success">
+                    <label class="control-label">标题</label>
+                    <div class="controls">
+                        <input type="text"  name="title" value="{$data.title}">
+                        <input type="hidden" name="id" value="{$data.id}">
+                    </div>
+                </div>
+                <div class="control-group success">
+                    <label class="control-label" for="selectError">选择文章类型</label>
+                    <div class="controls">
+                        <select id="selectError" name="type">
+                            <volist name="typelist" id="vo">
+                                <option value="{$vo.id}" <?php echo $vo['id'] == $data['type_id'] ? 'selected="selected"' : '';  ?> >{$vo.column}</option>
+                            </volist>
+                        </select>
+                    </div>
+                </div>
+                <div class="control-group success">
+                    <label class="control-label">作者</label>
+                    <div class="controls">
+                        <input type="text" name="author" value="{$data.author}">
+                    </div>
+                </div>
+                <div class="control-group success">
+                    <label class="control-label">来源</label>
+                    <div class="controls">
+                        <input type="text" name="from" value="{$data.from}">
+                    </div>
+                </div>
+                <div class="block-content collapse in">
+                    <textarea id="ckeditor_full" name="content">{$data.content}</textarea>
+                </div>
+                <div class="control-group" id="upload">
+                    <if condition="$data.file_name neq ''">
+                        <label class="control-label" for="fileInput">已有附件 </label>
+                        <div class="controls">
+                            <button type="button" class="btn" id="reupload">重新上传</button>
+                            <button type="button" class="btn" id="delupload" data-id="{$data.id}">删除附件</button>
+                        </div>
+                    <else/>
+                        <label class="control-label" for="fileInput">附件上传(仅限zip/rar)</label>
+                        <div class="controls">
+                            <input class="input-file uniform_on" id="fileInput" type="file" name="file" >
+                        </div>
+                    </if>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">保存</button>
+                </div>
+            </fieldset>
+        </form>
+        <div class="control-group">
+            <div class="controls" id="path"></div>
+            <label class="control-label" >图片上传 (向文章中插入图片请先上传, 仅限jpg/png, 3M以内)</label>
+            <div class="controls">
+                <input class="input-file uniform_on" id="pic" type="file">
+            </div>
+            <button type="button" class="btn btn-primary" id="picUpload">上传</button>
+        </div>
+
+    </div>
+    <!-- /block -->
+    <script src="__PUBLIC__/vendors/ckeditor/ckeditor.js"></script>
+    <script src="__PUBLIC__/vendors/ckeditor/adapters/jquery.js"></script>
+    <script>
+        // Ckeditor standard
+        $('textarea#ckeditor_standard' ).ckeditor({width:'98%', height: '150px', toolbar: [
+            { name: 'document', items: [ 'Source', '-', 'NewPage', 'Preview', '-', 'Templates' ] },	// Defines toolbar group with name (used to create voice label) and items in 3 subgroups.
+            [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ],			// Defines toolbar group without name.
+            { name: 'basicstyles', items: [ 'Bold', 'Italic' ] }
+        ]});
+        $( 'textarea#ckeditor_full' ).ckeditor({width:'98%', height: '150px'});
+
+        $("#picUpload").on('click', function () {
+            var formData = new FormData();
+            formData.append('file', $('#pic')[0].files[0]);
+            $.ajax({
+                url: "{:U('Article/picUpload')}",
+                type: 'POST',
+                cache: false,
+                data: formData,
+                processData: false,
+                contentType: false
+            }).done(function(res) {
+                if (res.status == 200) {
+                    alert('上传成功, 请复制链接, 并通过文本编辑器图片插入工具插入!');
+                    $("#path").append("图片地址: " + res.data + '<br/>');
+                } else {
+                    alert(res.info);
+                }
+            }).fail(function(res) {
+                alert('网络错误');
+            });
+        })
+
+        $("#delupload").on('click', function () {
+            var id = {$data.id};
+            $.ajax({
+                url: "{:U('Article/delUpload')}",
+                type: 'POST',
+                data: {'id':id},
+                dataType: 'json',
+            }).done(function(res) {
+                if (res.status == 200) {
+                    alert('删除成功');
+                    $("#upload").empty();
+                    $("#upload").append('<label class="control-label" >附件上传(仅限zip/rar)</label><div class="controls"><input class="input-file uniform_on" id="fileInput" type="file" name="file" ></div>');
+
+                } else {
+                    alert(res.info);
+                }
+            }).fail(function(res) {
+                alert('网络错误');
+            });        })
+
+        $("#reupload").on('click', function () {
+            $("#upload").empty();
+            $("#upload").append('<label class="control-label" >附件上传(仅限zip/rar)</label><div class="controls"><input class="input-file uniform_on" id="fileInput" type="file" name="file" ></div>');
+        })
+    </script>
+</block>
