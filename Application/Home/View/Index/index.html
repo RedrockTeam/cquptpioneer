@@ -95,7 +95,7 @@
                 <ul class="articles">
                     <volist name="articlelist.0" id="vo" >
                         <li class="article">
-                            <a href="">{$vo.title}</a>
+                            <a href="{:U('Article/index', array('id' => $vo['id']))}">{$vo.title}</a>
                             <span class="date"><?php echo substr($vo['time'], 5, 5); ?></span>
                         </li>
                     </volist>
@@ -113,7 +113,7 @@
                 <ul class="articles">
                     <volist name="articlelist.1" id="vo" >
                         <li class="article">
-                            <a href="">{$vo.title}</a>
+                            <a href="{:U('Article/index', array('id' => $vo['id']))}">{$vo.title}</a>
                             <span class="date"><?php echo substr($vo['time'], 5, 5); ?></span>
                         </li>
                     </volist>
@@ -131,7 +131,7 @@
                 <ul class="articles">
                     <volist name="articlelist.2" id="vo" >
                         <li class="article">
-                            <a href="">{$vo.title}</a>
+                            <a href="{:U('Article/index', array('id' => $vo['id']))}">{$vo.title}</a>
                             <span class="date"><?php echo substr($vo['time'], 5, 5); ?></span>
                         </li>
                     </volist>
@@ -149,7 +149,7 @@
                 <ul class="articles">
                     <volist name="articlelist.3" id="vo" >
                         <li class="article">
-                            <a href="">{$vo.title}</a>
+                            <a href="{:U('Article/index', array('id' => $vo['id']))}">{$vo.title}</a>
                             <span class="date"><?php echo substr($vo['time'], 5, 5); ?></span>
                         </li>
                     </volist>
