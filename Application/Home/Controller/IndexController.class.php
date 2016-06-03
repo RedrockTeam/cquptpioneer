@@ -1,7 +1,7 @@
 <?php
 namespace Home\Controller;
 use Think\Controller;
-class IndexController extends Controller {
+class IndexController extends BaseController {
 
     private $type;
     private $article;
@@ -11,7 +11,7 @@ class IndexController extends Controller {
         $this->type = M('type');
         $this->article = M('article');
         $this->link = M('link');
-
+        $header = $this->header();
         $articlelist = $this->articlelist();
         $recent = $this->recentArticle();
         $networkshow = $this->networkshow();
@@ -21,6 +21,7 @@ class IndexController extends Controller {
         $this->assign('recent', $recent);
         $this->assign('networkshow', $networkshow);
         $this->assign('picshow', $picshow);
+        $this->assign('header', $header);
         $this->assign('other', $other);
         $this->display();
     }
@@ -34,7 +35,7 @@ class IndexController extends Controller {
     }
 
     private function recentArticle() {
-        $articles = $this->article->order('id desc')->limit(2)->select();
+        $articles = $this->article->where('type_id = 3 or type_id = 4')->order('id desc')->limit(2)->select();
         foreach ($articles as &$value) {
             $value['content'] = htmlspecialchars(mb_substr(strip_tags(htmlspecialchars_decode($value['content'])), 0, 50));
         }

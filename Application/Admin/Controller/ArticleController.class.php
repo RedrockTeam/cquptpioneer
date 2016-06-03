@@ -41,7 +41,7 @@ class ArticleController extends BaseController {
             'file_name'  => (isset($name)||$name) ? $name : '',
             'file_path'  => (isset($path)||$path) ? $path : '',
             'content' => $input['content'],
-            'time'   => date('Y-m-d H:i:s', time())
+            'time'   => $input['time'] != '' ? date('Y-m-d H:i:s', strtotime($input['time'])) : date('Y-m-d H:i:s', time())
          );
         $article->add($data);
         $this->success('成功');
@@ -101,7 +101,7 @@ class ArticleController extends BaseController {
             'author' => $input['author'],
             'from'  => $input['from'],
             'content' => $input['content'],
-            'time'   => date('Y-m-d H:i:s', time())
+            'time'   => $input['time'] != '' ? date('Y-m-d H:i:s', strtotime($input['time'])) : date('Y-m-d H:i:s', time())
         );
         if (isset($name) || $name) {
             $data['file_name'] = $name;

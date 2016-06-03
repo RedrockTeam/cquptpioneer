@@ -16,18 +16,24 @@
 <body>
     <div class="header" style="background-image:url('__PUBLIC__/img/banner.png')">
         <ul class="three">
-            <li><a class="learn-rule" href=""></a></li>
-            <li><a class="learn-talk" href=""></a></li>
-            <li><a class="do" href=""></a></li>
+            <li><a class="learn-rule" href="http://lxyz.12371.cn/dzdg/"></a></li>
+            <li><a class="learn-talk" href="http://www.12371.cn/special/xjpzyls/xxxjpzyls/"></a></li>
+            <li><a class="do" href="http://lxyz.12371.cn/xjdx/"></a></li>
         </ul>
         <div class="nav">
             <ul class="nav-ul">
-                <li class="nav-li"><span class="active">首页</span></li>
-                <li class="nav-li"><span>工作动态</span></li>
-                <li class="nav-li"><span>基层行动</span></li>
-                <li class="nav-li"><span>网上党校</span></li>
-                <li class="nav-li"><span>学习资料</span></li>
-                <li class="nav-li"><span>网络活动</span></li>
+                <li class="nav-li">
+                    <a href="{:U('Index/index')}" style="color: #fff;">
+                        <span>首页</span>
+                    </a>
+                </li>
+                <volist name="header" id="vo">
+                    <li class="nav-li">
+                        <a href="<?php echo $vo['link'] != null ? $vo['link']:U('ArticleList/index', array('type_id'=>$vo['id']));  ?>" style="color: #fff;">
+                            <span <?php echo I('get.type_id') == $vo['id']? 'class="active"':''; ?>>{$vo.column}</span>
+                        </a>
+                    </li>
+                </volist>
             </ul>
         </div>
     </div>
@@ -58,7 +64,7 @@
                             <i class="iconfont">&#xe602;</i>
                             先进典型
                         </div>
-                        <a href="" class="more">more</a>
+                        <a href="http://lxyz.12371.cn/xjdx/" class="more">more</a>
                         <div class="border"></div>
                     </div>
                     <a href="{$other.xianjin.link}"><img src="{$other.xianjin.img}" alt="" width="220px" height="76px"></a>
@@ -69,7 +75,7 @@
                             <i class="iconfont">&#xe602;</i>
                             经典影像
                         </div>
-                        <a href="" class="more">more</a>
+                        <a href="http://lxyz.12371.cn/jdyx/" class="more">more</a>
                         <div class="border"></div>
                     </div>
                     <a href="{$other.dianxing.link}"><img src="{$other.dianxing.img}" alt="" width="220px" height="76px"></a>
@@ -83,7 +89,7 @@
                         <i class="iconfont">&#xe602;</i>
                         通知公告
                     </div>
-                    <a href="" class="more">more</a>
+                    <a href="{:U('ArticleList/index', array('type_id'=>2))}" class="more">more</a>
                     <div class="border"></div>
                 </div>
                 <ul class="articles">
@@ -101,7 +107,7 @@
                         <i class="iconfont">&#xe602;</i>
                         工作动态
                     </div>
-                    <a href="" class="more">more</a>
+                    <a href="{:U('ArticleList/index', array('type_id'=>3))}" class="more">more</a>
                     <div class="border"></div>
                 </div>
                 <ul class="articles">
@@ -119,7 +125,7 @@
                         <i class="iconfont">&#xe602;</i>
                         基层行动
                     </div>
-                    <a href="" class="more">more</a>
+                    <a href="{:U('ArticleList/index', array('type_id' => 4))}" class="more">more</a>
                     <div class="border"></div>
                 </div>
                 <ul class="articles">
@@ -137,7 +143,7 @@
                         <i class="iconfont">&#xe602;</i>
                         学习资料
                     </div>
-                    <a href="" class="more">more</a>
+                    <a href="{:U('ArticleList/index', array('type_id'=>5))}" class="more">more</a>
                     <div class="border"></div>
                 </div>
                 <ul class="articles">
@@ -157,7 +163,7 @@
                     <i class="iconfont">&#xe602;</i>
                     网络活动
                 </div>
-                <a href="" class="more">more</a>
+                <a href="https://redrock.cqupt.edu.cn/lxyz_activity/" class="more">more</a>
                 <div class="border"></div>
             </div>
             <div class="activities">
@@ -177,19 +183,19 @@
                     <i class="iconfont">&#xe602;</i>
                     相关链接
                 </div>
-                <a href="" class="more">more</a>
+                <!--<a href="" class="more">more</a>-->
                 <div class="border"></div>
             </div>
             <ul>
-                <li class="link"><a href="">共产党员学习教育网</a></li>
-                <li class="link"><a href="">七一网学习教育网</a></li>
-                <li class="link"><a href="">重庆市教育系统学习教育网</a></li>
+                <li class="link"><a href="http://lxyz.12371.cn/">共产党员学习教育网</a></li>
+                <li class="link"><a href="http://www.12371.gov.cn/Category_1130/Index.aspx">七一网学习教育网</a></li>
+                <li class="link"><a href="http://www.cqedu.cn/Category_308/Index.aspx">重庆市教育系统学习教育网</a></li>
             </ul>
         </div>
     </div>
     <div class="footer">
         <p>
-            <a href="http://hongyan.cqupt.edu.cn/web/">站点地图</a> | <a href="http://hongyan.cqupt.edu.cn/">关于红岩网校</a> | <a href="http://hongyan.cqupt.edu.cn/aboutus/">开发团队</a> | <a href="">指出错误</a> | <a href="">管理入口</a>
+            <a href="http://hongyan.cqupt.edu.cn/web/">站点地图</a> | <a href="http://hongyan.cqupt.edu.cn/">关于红岩网校</a> | <a href="http://hongyan.cqupt.edu.cn/aboutus/">开发团队</a> | <a href="">指出错误</a> | <a href="{:U('Admin/Login/index')}">管理入口</a>
             <br>
             本网由红岩网校工作站负责开发、管理，不经红岩网校委员会书面同意，不得进行转载
             <br>

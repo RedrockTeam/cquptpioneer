@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <title>xxxx</title>
+    <title>{$articleType.column}</title>
     <script src="__PUBLIC__/build/style.js"></script>
     <script src="__PUBLIC__/js/jquery.min.js"></script>
 </head>
@@ -11,6 +11,11 @@
     <div class="header" style="height: 400px;background-image:url('__PUBLIC__/img/banner.png')">
         <div class="nav">
             <ul class="nav-ul">
+                <li class="nav-li">
+                    <a href="{:U('Index/index')}" style="color: #fff;">
+                        <span>首页</span>
+                    </a>
+                </li>
                 <volist name="header" id="vo">
                    <li class="nav-li">
                        <a href="<?php echo $vo['link'] != null ? $vo['link']:U('ArticleList/index', array('type_id'=>$vo['id']));  ?>" style="color: #fff;">
@@ -42,16 +47,16 @@
         </div>
         <div class="right">
             <div class="top">
-                <a class="rule-white" href=""></a>
-                <a class="talk-white" href=""></a>
-                <a class="do-white" href=""></a>
+                <a class="rule-white" href="http://lxyz.12371.cn/dzdg/"></a>
+                <a class="talk-white" href="http://www.12371.cn/special/xjpzyls/xxxjpzyls/"></a>
+                <a class="do-white" href="http://lxyz.12371.cn/xjdx/"></a>
             </div>
             <div class="bottom">
                 <ul>
-                    <a href=""><li class="join"></li></a>
-                    <a href=""><li class="standard"></li></a>
-                    <a href=""><li class="educate"></li></a>
-                    <a href=""><li class="modal"></li></a>
+                    <a href="http://www.12371.cn/special/zggcdzc/#rudangshici"><li class="join"></li></a>
+                    <a href="http://fuwu.12371.cn/2016/03/17/ARTI1458192896262994.shtml"><li class="standard"></li></a>
+                    <a href="http://lxyz.12371.cn/jsjy/"><li class="educate"></li></a>
+                    <a href="http://lxyz.12371.cn/xjdx/"><li class="modal"></li></a>
                 </ul>
             </div>
         </div>

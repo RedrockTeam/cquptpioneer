@@ -29,5 +29,8 @@ class LoginController extends Controller {
         $this->success('成功', U('Index/index'));
     }
 
-    
+    public function logout() {
+        session(null);
+        $this->success('成功', U('Login/index'));
+    }
 }

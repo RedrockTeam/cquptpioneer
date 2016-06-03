@@ -10,6 +10,11 @@
     <div class="header" style="height: 400px;background-image:url('__PUBLIC__/img/banner.png')">
         <div class="nav">
             <ul class="nav-ul">
+                <li class="nav-li">
+                    <a href="{:U('Index/index')}" style="color: #fff;">
+                        <span>首页</span>
+                    </a>
+                </li>
                 <volist name="header" id="vo">
                     <li class="nav-li">
                         <a href="<?php echo $vo['link'] != null ? $vo['link']:U('ArticleList/index', array('type_id'=>$vo['id']));  ?>" style="color: #fff;">
