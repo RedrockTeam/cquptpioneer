@@ -36,26 +36,20 @@
             <div class="slider">
                 <div class="slide-banner">
                     <ul>
-                        <li>
-                            <img src="__PUBLIC__/img/mid-banner.png" alt="" width="338px" height="260px">
-                            <div class="shadow"><a href="">这是标题</a></div>
-                        </li>
-                        <li>
-                            <img src="__PUBLIC__/img/mid-banner.png" alt="" width="338px" height="260px">
-                            <div class="shadow"><a href="">这是标题</a></div>
-                        </li>
-                        <li>
-                            <img src="__PUBLIC__/img/mid-banner.png" alt="" width="338px" height="260px">
-                            <div class="shadow"><a href="">这是标题</a></div>
-                        </li>
+                        <volist name="picshow" id="vo">
+                            <li>
+                                <img src="{$vo.img}" alt="" width="338px" height="260px">
+                                <div class="shadow"><a href="{$vo.link}">{$vo.name}</a></div>
+                            </li>
+                        </volist>
                     </ul>
                 </div>
             </div>
             <div class="latest-news">
-                <h1 class="news-up"><a href="">啊搜集打工</a></h1>
-                <p>这是一段测试是上司放假放假撒进房间啊is阿济格骄傲地分奥很干净哦庞大十多个平均按时分d爱打打分按时发斯蒂芬这是一段测试是上司放假放假撒进房</p>
-                <h1 class="news-down"><a href="">啊搜集打工</a></h1>
-                <p>这是一段测试是上司放假放假撒进房间啊is阿济格骄傲地分奥很干净哦庞大十多个平均按时大法师打发斯蒂芬啊这是一段测试是上司放假放假撒进房</p>
+                <volist name="recent" id="vo">
+                    <h1 class="news-up"><a href="{:U('Article/index', array('id'=>$vo['id']))}">{$vo.title}</a></h1>
+                    <p>{$vo.content}</p>
+                </volist>
             </div>
             <div class="right-banners">
                 <div class="banner">
@@ -67,7 +61,7 @@
                         <a href="" class="more">more</a>
                         <div class="border"></div>
                     </div>
-                    <a href=""><img src="__PUBLIC__/img/do.png" alt="" width="220px" height="76px"></a>
+                    <a href="{$other.xianjin.link}"><img src="{$other.xianjin.img}" alt="" width="220px" height="76px"></a>
                 </div>
                 <div class="banner">
                     <div class="column-title">
@@ -78,7 +72,7 @@
                         <a href="" class="more">more</a>
                         <div class="border"></div>
                     </div>
-                    <a href=""><img src="__PUBLIC__/img/do.png" alt="" width="220px" height="76px"></a>
+                    <a href="{$other.dianxing.link}"><img src="{$other.dianxing.img}" alt="" width="220px" height="76px"></a>
                 </div>
             </div>
         </div>
@@ -168,26 +162,12 @@
             </div>
             <div class="activities">
                 <ul>
-                    <li class="wx_link">
-                        <img src="" alt="" width="180px" height="180px">
-                        <h3><a href="">标题</a></h3>
-                    </li>
-                    <li class="wx_link">
-                        <img src="" alt="" width="180px" height="180px">
-                        <h3><a href="">标题</a></h3>
-                    </li>
-                    <li class="wx_link">
-                        <img src="" alt="" width="180px" height="180px">
-                        <h3><a href="">标题</a></h3>
-                    </li>
-                    <li class="wx_link">
-                        <img src="" alt="" width="180px" height="180px">
-                        <h3><a href="">标题</a></h3>
-                    </li>
-                    <li class="wx_link">
-                        <img src="" alt="" width="180px" height="180px">
-                        <h3><a href="">标题</a></h3>
-                    </li>
+                    <volist name="networkshow" id="vo">
+                        <li class="wx_link">
+                            <img src="{$vo.img}" alt="{$vo.name}" width="180px" height="180px">
+                            <h3><a href="{$vo.link}">{$vo.name}</a></h3>
+                        </li>
+                    </volist>
                 </ul>
             </div>
         </div>

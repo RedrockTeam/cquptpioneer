@@ -1,26 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <title>xxxx</title>
-    <script src="public/build/style.js"></script>
+    <script src="__PUBLIC__/build/style.js"></script>
+    <script src="__PUBLIC__/js/jquery.min.js"></script>
 </head>
 <body>
-    <div class="header" style="height: 400px">
-        <!-- <ul class="three">
-            <li><a class="learn-rule" href=""></a></li>
-            <li><a class="learn-talk" href=""></a></li>
-            <li><a class="do" href=""></a></li>
-        </ul> -->
+    <div class="header" style="height: 400px;background-image:url('__PUBLIC__/img/banner.png')">
         <div class="nav">
             <ul class="nav-ul">
-                <li class="nav-li"><span class="active">首页</span></li>
-                <li class="nav-li"><span>工作动态</span></li>
-                <li class="nav-li"><span>基层行动</span></li>
-                <li class="nav-li"><span>网上党校</span></li>
-                <li class="nav-li"><span>学习资料</span></li>
-                <li class="nav-li"><span>网络活动</span></li>
+                <volist name="header" id="vo">
+                   <li class="nav-li">
+                       <a href="<?php echo $vo['link'] != null ? $vo['link']:U('ArticleList/index', array('type_id'=>$vo['id']));  ?>" style="color: #fff;">
+                           <span <?php echo I('get.type_id') == $vo['id']? 'class="active"':''; ?>>{$vo.column}</span>
+                       </a>
+                   </li>
+                </volist>
             </ul>
         </div>
     </div>
@@ -29,17 +26,18 @@
             <div class="column-title">
                 <div class="name">
                     <i class="iconfont">&#xe602;</i>
-                    学党章党规
+                    {$articleType.column}
                 </div>
                 <div class="border"></div>
             </div>
             <ul class="articles">
-                <li><a href="">标题</a></li>
-                <li><a href="">标题</a></li>
-                <li><a href="">标题</a></li>
+                <volist name="data" id="vo">
+                    <li><a href="{:U('Article/index', array('id'=>$vo['id']))}">{$vo.title}</a></li>
+                </volist>
             </ul>
             <div class="page-list">
-                <span class="prev iconfont">&#xe6df;</span><a class="active" href="">1</a><span class="next iconfont">&#xe6b4;</span>
+                {$page}
+                <!--<span class="prev iconfont">&#xe6df;</span><a class="active" href="">1</a><span class="next iconfont">&#xe6b4;</span>-->
             </div>
         </div>
         <div class="right">
@@ -67,5 +65,8 @@
             地址：重庆市南岸区黄桷垭镇 重庆邮电大学 400065 Email : redrock@cqupt.edu.cn (023-62461084)
         </p>
     </div>
+    <script>
+        $(".current").addClass("active");
+    </script>
 </body>
 </html>
