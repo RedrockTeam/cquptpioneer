@@ -25,7 +25,12 @@ class LoginController extends Controller {
         if($num != 1){
             $this->error('用户名或密码错误');
         }
-        session('username', $input['username']);
+        $user = M('admin')->where(array(
+            'username' => $input['username'],
+            'password' => hash('sha256', $input['password'])
+        ))->find();
+        session('username', $user['username']);
+        session('uid', $user['id']);
         $this->success('成功', U('Index/index'));
     }
 

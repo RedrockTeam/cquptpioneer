@@ -1,0 +1,56 @@
+<extend name="Public:base"/>
+<block name="title">
+    权限管理
+</block>
+
+<block name="menu">
+    <li class="">
+        <a href="{:U('Auth/index')}"><i class="icon-chevron-right"></i>权限授予</a>
+    </li>
+    <li class="active">
+        <a href="{:U('Auth/addUser')}"><i class="icon-chevron-right"></i>添加管理员</a>
+    </li>
+</block>
+<block name="auth">active</block>
+
+<block name="content">
+    <!-- block -->
+    <div class="block">
+        <div class="navbar navbar-inner block-header">
+            <div class="muted pull-left">添加管理员</div>
+        </div>
+        <div class="block-content collapse in">
+            <div class="span12">
+                <!-- BEGIN FORM-->
+                <form action="{:U('Auth/add')}" method="post" id="form_sample_1" class="form-horizontal">
+                    <fieldset>
+                        <div class="control-group">
+                            <label class="control-label">用户名<span class="required">*</span></label>
+                            <div class="controls">
+                                <input name="username" type="text" class="span6 m-wrap" required />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">密码<span class="required">*</span></label>
+                            <div class="controls">
+                                <input name="password" type="password" class="span6 m-wrap" required />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">重复密码<span class="required">*</span></label>
+                            <div class="controls">
+                                <input name="repeat" type="password" class="span6 m-wrap" required />
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">添加</button>
+                        </div>
+                    </fieldset>
+                </form>
+                <!-- END FORM-->
+            </div>
+        </div>
+    </div>
+    <!-- /block -->
+</block>

@@ -15,6 +15,7 @@ class ArticleController extends BaseController {
     //添加文章
     public function add(){
         $input = I('post.');
+        $this->auth($input['type']);
         $article = M('article');
         if($_FILES['file']['name']){
             $upload = new Upload();
@@ -77,6 +78,7 @@ class ArticleController extends BaseController {
 
     public function edit(){
         $input = I('post.');
+        $this->auth($input['type']);
         $article = M('article');
         if($_FILES['file']['name']){
             $upload = new Upload();
@@ -141,6 +143,8 @@ class ArticleController extends BaseController {
 
     public function delete(){
         $id = I('get.id');
+        $type_id = M('article')->where(array('id'=>$id))->getField('type_id');
+        $this->auth($type_id);
         M('article')->where(array('id'=>$id))->delete();
         $this->success('删除成功');
     }
