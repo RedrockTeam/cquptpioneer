@@ -19,9 +19,8 @@ class ArticleController extends BaseController {
         $article = M('article');
         if($_FILES['file']['name']){
             $upload = new Upload();
-            $this->mimes = array('zip', 'ZIP', 'RAR', 'rar');
             $upload->maxSize   =     3145728 ;// 设置附件上传大小
-            $upload->exts      =     array('zip', 'ZIP', 'RAR', 'rar');// 设置附件上传类型
+            $upload->exts      =     array('zip', 'ZIP', 'RAR', 'rar', 'docx','doc', 'pdf', 'xls', 'xlsx');// 设置附件上传类型
             $upload->rootPath  =     'Public/uploads/'; // 设置附件上传根目录
             // 上传文件
             $info   =   $upload->upload();
@@ -82,9 +81,8 @@ class ArticleController extends BaseController {
         $article = M('article');
         if($_FILES['file']['name']){
             $upload = new Upload();
-            $this->mimes = array('zip', 'ZIP', 'RAR', 'rar');
             $upload->maxSize   =     3145728 ;// 设置附件上传大小
-            $upload->exts      =     array('zip', 'ZIP', 'RAR', 'rar');// 设置附件上传类型
+            $upload->exts      =     array('zip', 'ZIP', 'RAR', 'rar', 'docx','doc', 'pdf', 'xls', 'xlsx');// 设置附件上传类型
             $upload->rootPath  =     'Public/uploads/'; // 设置附件上传根目录
             // 上传文件
             $info   =   $upload->upload();
