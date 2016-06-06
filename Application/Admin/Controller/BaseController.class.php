@@ -5,6 +5,7 @@ class BaseController extends Controller {
 
     public function _initialize(){
         if (!session('username') || !session('uid')){
+            session(null);
             $this->error('请先登录', U('Login/index'));
         }
     }
