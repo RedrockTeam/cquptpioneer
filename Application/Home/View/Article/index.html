@@ -28,9 +28,9 @@
     <div class="article-page">
         <h1>{$data.title}</h1>
         <span>发布时间：{$data.time}</span><span>来源：{$data.from}</span><span>作者：{$data.author}</span>
-        <p class="text">
-        {:htmlspecialchars_decode($data['content'])}
-        </p>
+            <div class="text">
+                {:htmlspecialchars_decode($data['content'])}
+            </div>
         <if condition="$data.file_path neq ''">
         <a class="download" href="{$data.file_path}">
             <i class="iconfont">&#xe640;</i> {$data.file_name}
