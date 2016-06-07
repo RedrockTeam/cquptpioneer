@@ -82,7 +82,6 @@
         // Ckeditor standard
 
         $editor = $('textarea#ckeditor_full' ).ckeditor({width:'98%', height: '150px'});
-        $editor.extraPlugins = 'dialogui,dialog,clipboard,pastefromword';
         $("#picUpload").on('click', function () {
             var formData = new FormData();
             formData.append('file', $('#pic')[0].files[0]);
