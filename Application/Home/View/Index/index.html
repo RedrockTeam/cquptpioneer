@@ -95,7 +95,7 @@
                 <ul class="articles">
                     <volist name="articlelist.0" id="vo" >
                         <li class="article">
-                            <a href="{:U('Article/index', array('id' => $vo['id']))}" target="_blank" >{$vo.title}</a>
+                            <a href="{:U('Article/index', array('id' => $vo['id']))}" target="_blank" >{:mb_substr($vo.title, 0, 34, 'utf-8')}</a>
                             <span class="date"><?php echo substr($vo['time'], 5, 5); ?></span>
                         </li>
                     </volist>

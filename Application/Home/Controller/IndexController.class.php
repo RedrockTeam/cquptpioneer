@@ -29,7 +29,7 @@ class IndexController extends BaseController {
     private function articlelist() {
         $articleCategory = $this->type->where(array('type' => 'article', 'status' => 1))->select();
         foreach ($articleCategory as $value) {
-            $articlelist[] = $this->article->where(array('type_id' => $value['id']))->order('id desc')->limit(6)->select();
+            $articlelist[] = $this->article->where(array('type_id' => $value['id']))->order('time desc')->limit(6)->select();
         }
         return $articlelist;
     }
@@ -37,7 +37,7 @@ class IndexController extends BaseController {
     private function recentArticle() {
         $articles = $this->article->where('type_id = 3 or type_id = 4')->order('id desc')->limit(2)->select();
         foreach ($articles as &$value) {
-            $value['content'] = htmlspecialchars(mb_substr(strip_tags(htmlspecialchars_decode($value['content'])), 0, 50));
+            $value['content'] = str_replace('&nbsp;', '', htmlspecialchars(mb_substr(strip_tags(htmlspecialchars_decode($value['content'])), 0, 50, 'utf-8')));
         }
         return $articles;
     }
