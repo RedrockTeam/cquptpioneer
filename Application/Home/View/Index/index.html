@@ -45,7 +45,7 @@
                         <volist name="picshow" id="vo">
                             <li>
                                 <img src="{$vo.img}" alt="" width="338px" height="260px">
-                                <div class="shadow"><a href="{$vo.link}">{$vo.name}</a></div>
+                                <div class="shadow"><a href="{$vo.link}">{:mb_substr($vo['name'], 0, 14, 'utf-8')}</a></div>
                             </li>
                         </volist>
                     </ul>
