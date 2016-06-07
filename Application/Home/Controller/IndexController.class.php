@@ -37,15 +37,7 @@ class IndexController extends BaseController {
     private function recentArticle() {
         $articles = $this->article->where('type_id = 3 or type_id = 4')->order('id desc')->limit(2)->select();
         foreach ($articles as &$value) {
-            $value['content'] = htmlspecialchars(
-                mb_substr(
-                    strip_tags(
-                        str_replace(array('nbsp;', ' ', '&nbsp;'), '', 
-                            htmlspecialchars_decode($value['content'])
-                        )
-                    )
-                    , 0, 50, 'utf-8')
-            );
+            $value['content'] = mb_substr(strip_tags(htmlspecialchars_decode($value['content'])), 0, 50, 'utf-8');
         }
         return $articles;
     }
