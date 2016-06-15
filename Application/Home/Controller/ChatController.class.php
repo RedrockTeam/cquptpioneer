@@ -65,8 +65,12 @@ class ChatController extends Controller {
     public function mobilechatdetail() {
         $id = I('post.id');
         $chat = M('chat');
+        $page = I('post.page', 1);
+        $page = $page < 1 ? 1: $page;
+        $pageSize = 15;
+        $offset = $pageSize * ($page-1);
         $lz = $chat->where(array('chat.id' => $id))->join('join users on chat.user_id = users.id')->field('chat.id, chat.title, chat.content, chat.time, users.name')->find();
-        $reply = $chat->where(array('chat.father_id' => $id))->join('join users on chat.user_id = users.id')->field('chat.id, chat.content, chat.time, users.name')->select();
+        $reply = $chat->where(array('chat.father_id' => $id))->join('join users on chat.user_id = users.id')->limit($offset, $pageSize)->field('chat.id, chat.content, chat.time, users.name')->select();
         $this->ajaxReturn(
             array(
                 'status' => 200,
