@@ -60,7 +60,10 @@ class IndexController extends BaseController {
     //给app的文章列表接口
     public function mobilearticlelist() {
         $type_id = I('post.id');
-        $data = M('article')->where(array('type_id' => $type_id))->field('id, title, content, time')->select();
+        $page = I('post.page', 1);
+        $pageSize = 15;
+        $offset = $pageSize * ($page-1);
+        $data = M('article')->where(array('type_id' => $type_id))->limit($offset, $pageSize)->field('id, title, content, time')->select();
         foreach ($data as &$value) {
             $value['content'] = mb_substr(strip_tags(htmlspecialchars_decode($value['content'])), 0, 50, 'utf-8');
         }
