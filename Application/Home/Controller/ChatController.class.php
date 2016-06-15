@@ -35,11 +35,11 @@ class ChatController extends Controller {
         $content = I('post.content');
         if ($father_id == 0) {
             $title = I('post.title');
-            if($title == '') {
+            if($title == '' || $content == '') {
                 $this->ajaxReturn(
                     array(
                         'status' => 403,
-                        'info' => '标题不能为空'
+                        'info' => '标题或内容不能为空'
                     )
                 );
             }
