@@ -28,7 +28,7 @@ class ArticleController extends BaseController {
         } else {
             unset($data['file_name']);
             unset($data['file_path']);
-            $data['file'] = [];
+            $data['file'] = array();
         }
         $this->ajaxReturn(array(
             'status' => 200,
