@@ -20,7 +20,7 @@ class ChatController extends Controller {
         ));
     }
 
-    public function chat() {
+    public function mobilechat() {
         $user_id = I('post.user_id');
         $token = I('post.token');
         if(!$this->verify($user_id, $token)) {
@@ -35,6 +35,14 @@ class ChatController extends Controller {
         $content = I('post.content');
         if ($father_id == 0) {
             $title = I('post.title');
+            if($title == '') {
+                $this->ajaxReturn(
+                    array(
+                        'status' => 403,
+                        'info' => '标题不能为空'
+                    )
+                );
+            }
         } else {
             $title = '';
         }
@@ -46,11 +54,39 @@ class ChatController extends Controller {
             'time' => time()
         );
         M('chat')->add($data);
+        $this->ajaxReturn(
+            array(
+                'status' => 200,
+                'info' => 'success'
+            )
+        );
+    }
 
+    public function mobilechatdetail() {
+        $id = I('post.id');
+        $chat = M('chat');
+        $lz = $chat->where(array('chat.id' => $id))->join('join users on chat.user_id = users.id')->field('chat.id, chat.title, chat.content, chat.time, users.name')->find();
+        $reply = $chat->where(array('chat.father_id' => $id))->join('join users on chat.user_id = users.id')->field('chat.id, chat.content, chat.time, users.name')->select();
+        $this->ajaxReturn(
+            array(
+                'status' => 200,
+                'info' => 'success',
+                'data' => array(
+                    'lz' => $lz,
+                    'reply' => $reply
+                )
+            )
+        );
     }
 
     private function verify($user_id, $token) {
-
-        return true;
+//        $num = M('users')->where(array(
+//                    'id' => $user_id,
+//                    'token' => $token
+//                ))->count();
+//        if ($num == 1) {
+            return true;
+//        }
+//        return false;
     }
 }
