@@ -57,13 +57,23 @@ class IndexController extends BaseController {
     }
 
 
-    //给app的接口
+    //给app的文章列表接口
     public function mobilearticlelist() {
         $type_id = I('post.id');
         $data = M('article')->where(array('type_id' => $type_id))->field('id, title, content, time')->select();
         foreach ($data as &$value) {
             $value['content'] = mb_substr(strip_tags(htmlspecialchars_decode($value['content'])), 0, 50, 'utf-8');
         }
+        $this->ajaxReturn(array(
+            'status' => 200,
+            'info'   => 'success',
+            'data'   => $data
+        ));
+    }
+
+    //轮播图
+    public function mobilepic() {
+        $data = M('link')->where(array('type_id' => 6))->order('id desc')->limit(5)->field('name as title, link, img as imgurl')->select();;
         $this->ajaxReturn(array(
             'status' => 200,
             'info'   => 'success',

@@ -12,4 +12,22 @@ class ArticleController extends BaseController {
         $this->assign('data', $data);
         $this->display();
     }
+
+    public function mobilearticle(){
+        $id = I('post.id');
+        $data = M('article')->where(array('id' => $id))->find();
+        $data['file'] = array(
+            array(
+                'name' => $data['file_name'],
+                'address' => $data['file_path']
+                )
+        );
+        unset($data['file_name']);
+        unset($data['file_path']);
+        $this->ajaxReturn(array(
+            'status' => 200,
+            'info'   => 'success',
+            'data'   => $data
+        ));
+    }
 }
