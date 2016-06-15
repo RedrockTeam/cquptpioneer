@@ -73,7 +73,7 @@ class IndexController extends BaseController {
 
     //轮播图
     public function mobilepic() {
-        $data = M('link')->where(array('type_id' => 6))->order('id desc')->limit(5)->field('name as title, link, img as imgurl')->select();;
+        $data = M('link')->where(array('type_id' => 14))->order('id desc')->limit(3)->field('name as title, link, img as imgurl')->select();;
         $this->ajaxReturn(array(
             'status' => 200,
             'info'   => 'success',
