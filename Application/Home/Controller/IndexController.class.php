@@ -55,4 +55,19 @@ class IndexController extends BaseController {
         $data['jingdian'] = $this->link->where(array('type_id' => 10))->order('id desc')->limit(3)->select();
         return $data;
     }
+
+
+    //给app的接口
+    public function mobilearticlelist() {
+        $type_id = I('post.id');
+        $data = M('article')->where(array('type_id' => $type_id))->field('id, title, content, time')->select();
+        foreach ($data as &$value) {
+            $value['content'] = mb_substr(strip_tags(htmlspecialchars_decode($value['content'])), 0, 50, 'utf-8');
+        }
+        $this->ajaxReturn(array(
+            'status' => 200,
+            'info'   => 'success',
+            'data'   => $data
+        ));
+    }
 }
