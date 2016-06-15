@@ -66,7 +66,7 @@ class IndexController extends BaseController {
         $offset = $pageSize * ($page-1);
         $data = M('article')->where(array('type_id' => $type_id))->limit($offset, $pageSize)->field('id, title, content, time')->select();
         foreach ($data as &$value) {
-            $value['content'] = mb_substr(strip_tags(htmlspecialchars_decode(str_replace('nbsp;','',$value['content']))), 0, 50, 'utf-8');
+            $value['content'] = mb_substr(str_replace('&nbsp;', '', strip_tags(htmlspecialchars_decode($value['content']))), 0, 50, 'utf-8');
         }
         $this->ajaxReturn(array(
             'status' => 200,
