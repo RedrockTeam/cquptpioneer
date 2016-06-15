@@ -61,6 +61,7 @@ class IndexController extends BaseController {
     public function mobilearticlelist() {
         $type_id = I('post.id');
         $page = I('post.page', 1);
+        $page = $page < 1 ? 1: $page;
         $pageSize = 15;
         $offset = $pageSize * ($page-1);
         $data = M('article')->where(array('type_id' => $type_id))->limit($offset, $pageSize)->field('id, title, content, time')->select();
