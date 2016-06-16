@@ -98,13 +98,13 @@ class ChatController extends Controller {
 //    }
 
     private function verify($user_id, $token) {
-//        $num = M('users')->where(array(
-//                    'id' => $user_id,
-//                    'token' => $token
-//                ))->count();
-//        if ($num == 1) {
+        $num = M('users')->where(array(
+                    'id' => $user_id,
+                    'token' => $token
+                ))->count();
+        if ($num == 1) {
             return true;
-//        }
-//        return false;
+        }
+        return false;
     }
 }
