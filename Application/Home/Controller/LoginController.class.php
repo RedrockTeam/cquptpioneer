@@ -14,11 +14,8 @@ class LoginController extends BaseController {
             ));
         }
         $password = sha1($password);
-        var_dump($password);
-        var_dump($idcard);
         $users = M('users');
         $data = $users->where(array('idcard' => $idcard, 'password' => $password))->find();
-        var_dump($data);
         if ($data == '' || $data == null) {
             $this->ajaxReturn(array(
                 'status' => 403,
