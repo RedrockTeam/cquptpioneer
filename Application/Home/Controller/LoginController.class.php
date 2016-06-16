@@ -37,6 +37,7 @@ class LoginController extends BaseController {
                 'info'   => '成功',
                 'data'   => array(
                     'user_id' => $data['id'],
+                    'name' => $data['name'],
                     'token'   => $token,
                     'changed' => $changed //0未修改密码1已修改密码
                 )
