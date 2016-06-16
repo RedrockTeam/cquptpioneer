@@ -83,6 +83,20 @@ class ChatController extends Controller {
         );
     }
 
+//    public function test() {
+//        $data = M('teacher')->select();
+//        $users = M('users');
+//        foreach ($data as $value) {
+//            $row = array(
+//                'idcard' => $value['idcard'],
+//                'name'   => $value['name'],
+//                'password' => sha1($value['idcard'])
+//            );
+//            $users->add($row);
+//        }
+//        echo 'ok';
+//    }
+
     private function verify($user_id, $token) {
 //        $num = M('users')->where(array(
 //                    'id' => $user_id,
