@@ -1,6 +1,7 @@
 <?php
 namespace Home\Controller;
 use Think\Controller;
+use Think\Model;
 
 class LoginController extends BaseController {
 
@@ -43,6 +44,54 @@ class LoginController extends BaseController {
                 )
             )
         ));
+    }
+
+    public function changepassword() {
+        $id = I('post.id');
+        $oldpassword = sha1(I('post.oldpassword'));
+        $newpassword = sha1(I('post.newpassword'));
+        $token = I('post.token');
+        if (!$id || !$oldpassword || !$newpassword || !$token) {
+            $this->ajaxReturn(
+                array(
+                    'status' => 403,
+                    'info'   => '参数错误'
+                )
+            );
+        }
+        $users= M('users');
+        $data = $users->where(array('id' => $id, 'token' => $token))->find();
+        if($token != $data['token']) {
+            $this->ajaxReturn(
+                array(
+                    'status' => 403,
+                    'info'   => '请先登录'
+                )
+            );
+        }
+        if ($data['password'] != $oldpassword) {
+            $this->ajaxReturn(
+                array(
+                    'status' => 403,
+                    'info'   => '旧密码错误'
+                )
+            );
+        }
+        if ($data['password'] == $newpassword) {
+            $this->ajaxReturn(
+                array(
+                    'status' => 403, 
+                    'info'   => '新密码与原密码相同'
+                )
+            );
+        }
+        $users->where(array('id' => $id))->save(array('password' => $newpassword));
+        $this->ajaxReturn(
+            array(
+                'status' => 200,
+                'info'   => 'success'
+            )
+        );
     }
 
 }
