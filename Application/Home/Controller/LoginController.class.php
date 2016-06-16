@@ -47,7 +47,7 @@ class LoginController extends BaseController {
     }
 
     public function changepassword() {
-        $id = I('post.id');
+        $id = I('post.user_id');
         $oldpassword = sha1(I('post.oldpassword'));
         $newpassword = sha1(I('post.newpassword'));
         $token = I('post.token');
