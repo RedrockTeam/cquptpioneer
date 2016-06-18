@@ -36,7 +36,7 @@ class LinkController extends BaseController {
         $input = I('post.');
         M('link')->where(array('id' => $input['id']))
                 ->save(array(
-                    'img' => $input['img'],
+                    'img' => trim($input['img']),
                     'link' => trim($input['link'])
             ));
         $this->ajaxReturn(array('status' => 200, 'info' => '成功'));
