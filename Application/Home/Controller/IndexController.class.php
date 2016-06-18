@@ -79,7 +79,7 @@ class IndexController extends BaseController {
     public function mobilepic() {
         $data = M('link')->where(array('type_id' => 14))->order('id desc')->limit(3)->field('name as title, link, img as imgurl')->select();;
         foreach ($data as &$value) {
-            $value['img'] = trim($value['img']);
+            $value['imgurl'] = trim($value['imgurl']);
             $value['link'] = trim($value['link']);
         }
         $this->ajaxReturn(array(
