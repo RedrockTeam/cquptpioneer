@@ -81,7 +81,7 @@ class IndexController extends BaseController {
         $this->ajaxReturn(array(
             'status' => 200,
             'info'   => 'success',
-            'data'   => $data
+            'data'   => trim($data)
         ));
     }
 }
