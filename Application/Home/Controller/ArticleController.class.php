@@ -16,6 +16,7 @@ class ArticleController extends BaseController {
     public function mobilearticle(){
         $id = I('post.id');
         $data = M('article')->where(array('id' => $id))->find();
+        $data['content'] = htmlspecialchars_decode($data['content']);
         if ($data['file_name']) {
             $data['file'] = array(
                 array(
@@ -23,7 +24,6 @@ class ArticleController extends BaseController {
                     'address' => $data['file_path']
                 )
             );
-            $data['content'] = htmlspecialchars($data['content']);
             unset($data['file_name']);
             unset($data['file_path']);
         } else {
