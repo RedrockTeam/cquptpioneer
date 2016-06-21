@@ -23,6 +23,7 @@ class ArticleController extends BaseController {
                     'address' => $data['file_path']
                 )
             );
+            $data['content'] = htmlspecialchars_decode($data['content']);
             unset($data['file_name']);
             unset($data['file_path']);
         } else {
