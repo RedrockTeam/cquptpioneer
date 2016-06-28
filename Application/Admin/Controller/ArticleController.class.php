@@ -15,12 +15,12 @@ class ArticleController extends BaseController {
     //添加文章
     public function add(){
         $input = I('post.');
+        $this->auth($input['type']);
         $article = M('article');
         if($_FILES['file']['name']){
             $upload = new Upload();
-            $this->mimes = array('zip', 'ZIP', 'RAR', 'rar');
-            $upload->maxSize   =     3145728 ;// 设置附件上传大小
-            $upload->exts      =     array('zip', 'ZIP', 'RAR', 'rar');// 设置附件上传类型
+            $upload->maxSize   =     3145728;// 设置附件上传大小
+            $upload->exts      =     array('zip', 'ZIP', 'RAR', 'rar', 'docx','doc', 'pdf', 'xls', 'xlsx');// 设置附件上传类型
             $upload->rootPath  =     'Public/uploads/'; // 设置附件上传根目录
             // 上传文件
             $info   =   $upload->upload();
@@ -41,7 +41,7 @@ class ArticleController extends BaseController {
             'file_name'  => (isset($name)||$name) ? $name : '',
             'file_path'  => (isset($path)||$path) ? $path : '',
             'content' => $input['content'],
-            'time'   => date('Y-m-d H:i:s', time())
+            'time'   => $input['time'] != '' ? date('Y-m-d H:i:s', strtotime($input['time'])) : date('Y-m-d H:i:s', time())
          );
         $article->add($data);
         $this->success('成功');
@@ -77,12 +77,12 @@ class ArticleController extends BaseController {
 
     public function edit(){
         $input = I('post.');
+        $this->auth($input['type']);
         $article = M('article');
         if($_FILES['file']['name']){
             $upload = new Upload();
-            $this->mimes = array('zip', 'ZIP', 'RAR', 'rar');
             $upload->maxSize   =     3145728 ;// 设置附件上传大小
-            $upload->exts      =     array('zip', 'ZIP', 'RAR', 'rar');// 设置附件上传类型
+            $upload->exts      =     array('zip', 'ZIP', 'RAR', 'rar', 'docx','doc', 'pdf', 'xls', 'xlsx');// 设置附件上传类型
             $upload->rootPath  =     'Public/uploads/'; // 设置附件上传根目录
             // 上传文件
             $info   =   $upload->upload();
@@ -101,7 +101,7 @@ class ArticleController extends BaseController {
             'author' => $input['author'],
             'from'  => $input['from'],
             'content' => $input['content'],
-            'time'   => date('Y-m-d H:i:s', time())
+            'time'   => $input['time'] != '' ? date('Y-m-d H:i:s', strtotime($input['time'])) : date('Y-m-d H:i:s', time())
         );
         if (isset($name) || $name) {
             $data['file_name'] = $name;
@@ -141,6 +141,8 @@ class ArticleController extends BaseController {
 
     public function delete(){
         $id = I('get.id');
+        $type_id = M('article')->where(array('id'=>$id))->getField('type_id');
+        $this->auth($type_id);
         M('article')->where(array('id'=>$id))->delete();
         $this->success('删除成功');
     }

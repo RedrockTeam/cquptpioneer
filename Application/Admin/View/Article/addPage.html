@@ -36,20 +36,26 @@
                 <div class="control-group success">
                     <label class="control-label">作者</label>
                     <div class="controls">
-                        <input type="text" name="author">
+                        <input type="text" name="author" value="党委组织部">
                     </div>
                 </div>
                 <div class="control-group success">
                     <label class="control-label">来源</label>
                     <div class="controls">
-                        <input type="text" name="from">
+                        <input type="text" name="from" value="党委组织部">
+                    </div>
+                </div>
+                <div class="control-group success">
+                    <label class="control-label">发布时间</label>
+                    <div class="controls">
+                        <input type="text" name="time" value="{:date('Y-m-d H:i:s', time())}">
                     </div>
                 </div>
                 <div class="block-content collapse in">
                     <textarea id="ckeditor_full" name="content"></textarea>
                 </div>
                 <div class="control-group">
-                    <label class="control-label" for="fileInput">附件上传(仅限zip/rar)</label>
+                    <label class="control-label" for="fileInput">附件上传(仅限zip/rar/doc/docx/pdf/xls/xlsx)</label>
                     <div class="controls">
                         <input class="input-file uniform_on" id="fileInput" type="file" name="file">
                     </div>
@@ -74,13 +80,8 @@
     <script src="__PUBLIC__/vendors/ckeditor/adapters/jquery.js"></script>
     <script>
         // Ckeditor standard
-        $('textarea#ckeditor_standard' ).ckeditor({width:'98%', height: '150px', toolbar: [
-            { name: 'document', items: [ 'Source', '-', 'NewPage', 'Preview', '-', 'Templates' ] },	// Defines toolbar group with name (used to create voice label) and items in 3 subgroups.
-            [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ],			// Defines toolbar group without name.
-            { name: 'basicstyles', items: [ 'Bold', 'Italic' ] }
-        ]});
-        $( 'textarea#ckeditor_full' ).ckeditor({width:'98%', height: '150px'});
 
+        $editor = $('textarea#ckeditor_full' ).ckeditor({width:'98%', height: '150px'});
         $("#picUpload").on('click', function () {
             var formData = new FormData();
             formData.append('file', $('#pic')[0].files[0]);
