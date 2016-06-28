@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>重邮先锋网-文章详情</title>
+    <script src="__PUBLIC__/build/style.js"></script>
+</head>
+<body>
+    <div class="header" style="height: 400px;background-image:url('__PUBLIC__/img/banner.png')">
+        <div class="nav">
+            <ul class="nav-ul">
+                <li class="nav-li">
+                    <a href="{:U('Index/index')}" style="color: #fff;">
+                        <span>首页</span>
+                    </a>
+                </li>
+                <volist name="header" id="vo">
+                    <li class="nav-li">
+                        <a href="<?php echo $vo['link'] != null ? $vo['link']:U('ArticleList/index', array('type_id'=>$vo['id']));  ?>" style="color: #fff;">
+                            <span <?php echo I('get.type_id') == $vo['id']? 'class="active"':''; ?>>{$vo.column}</span>
+                        </a>
+                    </li>
+                </volist>
+            </ul>
+        </div>
+    </div>
+    <div class="article-page">
+        <h1>{$data.title}</h1>
+        <span>发布时间：{$data.time}</span><span>来源：{$data.from}</span><span>作者：{$data.author}</span>
+            <div class="text">
+                {:htmlspecialchars_decode($data['content'])}
+            </div>
+        <if condition="$data.file_path neq ''">
+        <a class="download" href="{$data.file_path}">
+            <i class="iconfont">&#xe640;</i> {$data.file_name}
+        </a>
+        </if>
+    </div>
+    <div class="footer">
+        <p>
+            <a href="http://hongyan.cqupt.edu.cn/web/">站点地图</a> | <a href="http://hongyan.cqupt.edu.cn/">关于红岩网校</a> | <a href="http://hongyan.cqupt.edu.cn/aboutus/">开发团队</a> | <a href="">指出错误</a> | <a href="{:U('Admin/Login/index')}">管理入口</a>
+            <br>
+            本网由红岩网校工作站负责开发、管理，不经红岩网校委员会书面同意，不得进行转载
+            <br>
+            地址：重庆市南岸区黄桷垭镇 重庆邮电大学 400065 Email : redrock@cqupt.edu.cn (023-62461084)
+        </p>
+    </div>
+</body>
+</html>
