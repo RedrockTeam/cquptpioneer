@@ -8,6 +8,8 @@ class IndexController extends BaseController {
     private $link;
 
     public function index(){
+        // var_dump(hash('sha256', 'cqupt62461136'));
+        // exit();
         $this->type = M('type');
         $this->article = M('article');
         $this->link = M('link');
