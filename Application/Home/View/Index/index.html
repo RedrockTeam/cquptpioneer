@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <title>重邮先锋网</title>
+    <title>重邮十九大专题网</title>
     <style>
         .unslider-nav {
             position: absolute;
@@ -64,10 +64,10 @@
                             <i class="iconfont">&#xe602;</i>
                             视听盛会
                         </div>
-                        <a href="http://lxyz.12371.cn/xjdx/" target="_blank" class="more">more</a>
+                        <a href="http://www.12371.cn/special/19da/stsh/" target="_blank" class="more">more</a>
                         <div class="border"></div>
                     </div>
-                    <a href="http://lxyz.12371.cn/xjdx/" target="_blank"><img src="__PUBLIC__/img/shiting.png" alt="" width="220px" height="76px"></a>
+                    <a href="http://www.12371.cn/special/19da/stsh/" target="_blank"><img src="__PUBLIC__/img/shiting.png" alt="" width="220px" height="76px"></a>
                 </div>
                 <div class="banner">
                     <div class="column-title">
@@ -75,10 +75,10 @@
                             <i class="iconfont">&#xe602;</i>
                             学习平台
                         </div>
-                        <a href="http://lxyz.12371.cn/jdyx/" target="_blank"  class="more">more</a>
+                        <a href="http://www.12371.cn/special/xxzd/" target="_blank"  class="more">more</a>
                         <div class="border"></div>
                     </div>
-                    <a href="http://lxyz.12371.cn/jdyx/" target="_blank" ><img src="__PUBLIC__/img/xuexi.png" alt=""  target="_blank" width="220px" height="76px"></a>
+                    <a href="http://www.12371.cn/special/xxzd/" target="_blank" ><img src="__PUBLIC__/img/xuexi.png" alt=""  target="_blank" width="220px" height="76px"></a>
                 </div>
             </div>
         </div>
@@ -87,7 +87,7 @@
                 <div class="column-title">
                     <div class="name">
                         <i class="iconfont">&#xe602;</i>
-                        通知公告
+                        中央精神
                     </div>
                     <a href="{:U('ArticleList/index', array('type_id'=>2))}" class="more" target="_blank" >more</a>
                     <div class="border"></div>
@@ -107,24 +107,6 @@
                         <i class="iconfont">&#xe602;</i>
                         工作动态
                     </div>
-                    <a href="{:U('ArticleList/index', array('type_id'=>3))}" target="_blank"  class="more">more</a>
-                    <div class="border"></div>
-                </div>
-                <ul class="articles">
-                    <volist name="articlelist.1" id="vo" >
-                        <li class="article">
-                            <a href="{:U('Article/index', array('id' => $vo['id']))}" target="_blank" >{:mb_substr($vo['title'], 0, 34, 'utf-8')}</a>
-                            <span class="date"><?php echo substr($vo['time'], 5, 5); ?></span>
-                        </li>
-                    </volist>
-                </ul>
-            </div>
-            <div class="column column-left">
-                <div class="column-title">
-                    <div class="name">
-                        <i class="iconfont">&#xe602;</i>
-                        基层行动
-                    </div>
                     <a href="{:U('ArticleList/index', array('type_id' => 4))}" class="more" target="_blank" >more</a>
                     <div class="border"></div>
                 </div>
@@ -137,11 +119,29 @@
                     </volist>
                 </ul>
             </div>
+            <div class="column column-left">
+                <div class="column-title">
+                    <div class="name">
+                        <i class="iconfont">&#xe602;</i>
+                        校园宣讲
+                    </div>
+                    <a href="{:U('ArticleList/index', array('type_id'=>3))}" target="_blank"  class="more">more</a>
+                    <div class="border"></div>
+                </div>
+                <ul class="articles">
+                    <volist name="articlelist.1" id="vo" >
+                        <li class="article">
+                            <a href="{:U('Article/index', array('id' => $vo['id']))}" target="_blank" >{:mb_substr($vo['title'], 0, 34, 'utf-8')}</a>
+                            <span class="date"><?php echo substr($vo['time'], 5, 5); ?></span>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
             <div class="column">
                 <div class="column-title">
                     <div class="name">
                         <i class="iconfont">&#xe602;</i>
-                        学习资料
+                        学习心得
                     </div>
                     <a href="{:U('ArticleList/index', array('type_id'=>5))}" class="more" target="_blank" >more</a>
                     <div class="border"></div>
@@ -190,7 +190,7 @@
                 <li class="link" style="width: 164px"><a href="http://www.xinhuanet.com/" target="_blank" >新华网</a></li>
                 <li class="link" style="width: 164px"><a href="http://www.people.com.cn/" target="_blank" >人民网</a></li>
                 <li class="link" style="width: 164px"><a href="http://www.moe.edu.cn/" target="_blank" >教育部</a></li>
-                <li class="link" style="width: 164px"><a href="http://www.cqjt.gov.cn/" target="_blank" >重庆市交委</a></li>
+                <li class="link" style="width: 164px"><a href="http://www.cqjw.gov.cn/" target="_blank" >重庆市教委</a></li>
                 <li class="link" style="width: 164px"><a href="http://www.cqnews.net/" target="_blank" >华龙网</a></li>
             </ul>
         </div>
