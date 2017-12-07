@@ -8,6 +8,7 @@ class IndexController extends BaseController {
     private $link;
 
     public function index(){
+        // var_dump(hash('sha256', 'admin'));
         // var_dump(hash('sha256', 'cqupt62461136'));
         // exit();
         $this->type = M('type');
@@ -37,7 +38,8 @@ class IndexController extends BaseController {
     }
 
     private function recentArticle() {
-        $articles = $this->article->where('type_id = 3 or type_id = 4')->order('id desc')->limit(2)->select();
+        $articles = $this->article->where('type_id = 3')->order('id desc')->limit(2)->select();
+        // $articles = $this->article->where('type_id = 3 or type_id = 4')->order('id desc')->limit(2)->select();
         foreach ($articles as &$value) {
             $value['content'] = mb_substr(strip_tags(htmlspecialchars_decode($value['content'])), 0, 50, 'utf-8');
         }
